@@ -1,0 +1,59 @@
+@import "../../../CommonCSS/variables.scss";
+
+.selection {
+  display: flex;
+  height: 6.4rem;
+  background-color: map-get($colors, "white");
+  margin-bottom: 0.3rem;
+
+  &__text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 1rem;
+    gap: 1rem;
+  }
+
+  .label {
+    font-size: 1.4rem;
+    color: map-get($colors, "governorBay");
+  }
+
+  .text {
+    font-size: 1.5rem;
+    color: map-get($colors, "nevada");
+  }
+
+  &--date {
+    position: relative;
+    margin-top: 2rem;
+  }
+
+  .button {
+    width: 5.6rem;
+    height: 2.4rem;
+    background-color: map-get($colors, "white");
+    color: map-get($colors, "nevada");
+    border: 1px solid map-get($colors, "nevada");
+    border-radius: 0.2rem;
+    cursor: pointer;
+
+    &--active {
+      color: map-get($colors, "white");
+      background-color: map-get($colors, "nevada");
+    }
+
+    &__wrapper {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
