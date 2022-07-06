@@ -13,9 +13,24 @@ const formatDate = (date) => {
     "Cumartesi",
   ];
 
+  const monthArr = [
+    "Ocak",
+    "Şubat",
+    "Mart",
+    "Nisan",
+    "Mayıs",
+    "Haziran",
+    "Temmuz",
+    "Ağustos",
+    "Eylül",
+    "Ekim",
+    "Kasım",
+    "Aralık",
+  ];
+
   return [
     padTo2Digits(date.getDate()),
-    padTo2Digits(date.getMonth() + 1),
+    monthArr[date.getMonth()],
     date.getFullYear(),
     dayArr[date.getDay()],
   ].join(" ");
