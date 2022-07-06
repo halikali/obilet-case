@@ -1,16 +1,24 @@
 import { Calendar } from "components/Icons/Icons.component";
-import { useState } from "react";
+import { formatDate } from "helper";
+import { useEffect, useState } from "react";
 
 import "./DateInput.style.scss";
 
 const DateInput = () => {
-  const [active, setActive] = useState("Bugün");
-  const date = new Date();
+  const [activeDay, setActiveDay] = useState("Bugün");
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    activeDay === "Bugün" ? setDate(new Date()) : setDate(tomorrow);
+  }, [activeDay]);
+
   const buttons = document.getElementsByClassName("button");
 
   const findActiveFilter = () => {
     const activeFilter = document.querySelector(".button--active");
-    activeFilter && setActive(activeFilter.innerText);
+    activeFilter && setActiveDay(activeFilter.innerText);
   };
 
   const setActiveButton = (e) => {
@@ -22,18 +30,12 @@ const DateInput = () => {
     findActiveFilter();
   };
 
-  const setDate = () => {
-    console.log(date);
-  };
-
-  setDate();
-
   return (
     <div className="selection selection--date">
       <Calendar className="selection__icon" />
       <div className="selection__text-wrapper">
         <p className="label">Tarih</p>
-        <p className="text">1 Nisan 2018 Pazar</p>
+        <p className="text">{formatDate(date)} </p>
       </div>
       <div className="button__wrapper">
         <button className="button button--active" onClick={setActiveButton}>
