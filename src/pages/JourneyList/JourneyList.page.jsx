@@ -1,4 +1,4 @@
-import { Navigate, useHistory, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import JourneyCard from "components/JourneyCard/JourneyCard.component";
 import { ArrowBack } from "components/Icons/Icons.component";

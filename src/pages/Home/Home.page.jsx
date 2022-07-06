@@ -1,7 +1,7 @@
-import CityInput from "components/Inputs/CityInput/CityInput.component";
-import DateInput from "components/Inputs/DateInput/DateInput.component";
 import { Link } from "react-router-dom";
 
+import CityInput from "components/Inputs/CityInput/CityInput.component";
+import DateInput from "components/Inputs/DateInput/DateInput.component";
 import "./HomePage.style.scss";
 
 const HomePage = () => {

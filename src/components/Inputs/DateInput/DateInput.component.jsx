@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
+
 import { Calendar } from "components/Icons/Icons.component";
 import { formatDate } from "helper";
-import { useEffect, useState } from "react";
 
 import "./DateInput.style.scss";
 
