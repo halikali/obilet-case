@@ -1,0 +1,45 @@
+@import "../../CommonCSS/variables.scss";
+
+.homepage {
+  .header {
+    width: 100%;
+    height: 4rem;
+    background-color: map-get($colors, "governorBay");
+  }
+
+  .content {
+    padding: 1rem 1.6rem;
+    background-color: map-get($colors, "alabaster");
+  }
+
+  .find-button {
+    display: block;
+    width: 20.8rem;
+    height: 4.1rem;
+    border: none;
+    border-radius: 0.4rem;
+    color: map-get($colors, "white");
+    background-color: map-get($colors, "governorBay");
+    font-size: 1.7rem;
+    transform: translateX(-50%);
+    margin: 2.3rem 50%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 4.1rem;
+  }
+
+  .seo-desc {
+    &__wrapper {
+      height: 15rem;
+      overflow-y: scroll;
+      padding: 1rem 2rem 1.5rem 2.9rem;
+    }
+
+    &__text {
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+      color: map-get($colors, "nevada");
+    }
+  }
+}
