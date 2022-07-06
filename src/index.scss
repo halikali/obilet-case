@@ -1,0 +1,13 @@
+@import "./CommonCSS/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+body {
+  width: 100%;
+  margin: 0;
+  font-family: 'Oxygen', sans-serif;
+  background-color: map-get($colors, "concrete");
+}
+
+html {
+  font-size: 10px;
+}
