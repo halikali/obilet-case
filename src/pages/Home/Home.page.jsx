@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import CityInput from "components/Inputs/CityInput/CityInput.component";
 import DateInput from "components/Inputs/DateInput/DateInput.component";
+import { Switch } from "components/Icons/Icons.component";
 import "./HomePage.style.scss";
 
 const HomePage = () => {
@@ -10,8 +11,9 @@ const HomePage = () => {
       <div className="header"></div>
       <div className="content">
         <div className="selection__city-areas-wrapper">
-          <CityInput label={"nereden"} city="istanbul" />
-          <CityInput label={"nereye"} city="Ankara" />
+          <CityInput label={"Nereden"} city="istanbul" />
+          <CityInput label={"Nereye"} city="Ankara" />
+          <Switch className="icon" />
         </div>
 
         <DateInput />
