@@ -1,11 +1,18 @@
 @import "../../../CommonCSS/variables.scss";
 
 .selection {
+  position: relative;
   display: flex;
   align-items: center;
   height: 6.4rem;
   background-color: map-get($colors, "white");
   margin-bottom: 0.3rem;
+
+  &:hover {
+    .dropdown {
+      display: block;
+    }
+  }
 
   &__text-wrapper {
     display: flex;
@@ -15,8 +22,6 @@
     margin-left: 1rem;
     gap: 1rem;
   }
-
-
 
   &__icon {
     width: 1.5rem;
@@ -28,6 +33,7 @@
     position: relative;
     margin-top: 2rem;
   }
+
   .label {
     font-size: 1.4rem;
 
@@ -37,5 +43,11 @@
   .text {
     font-size: 1.5rem;
     color: map-get($colors, "nevada");
+  }
+
+  .input {
+    border: none;
+    outline: 0;
+    cursor: pointer;
   }
 }
