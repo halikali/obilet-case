@@ -1,19 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { Calendar } from "components/Icons/Icons.component";
-import { formatDate } from "helper";
-
+import { formatDate, padTo2Digits } from "helper";
+import { setDepartureDate } from "Slices/FormSlices";
 import "./DateInput.style.scss";
+
 
 const DateInput = () => {
   const [activeDay, setActiveDay] = useState("Bugün");
   const [date, setDate] = useState(new Date());
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     activeDay === "Bugün" ? setDate(new Date()) : setDate(tomorrow);
   }, [activeDay]);
+
+  useLayoutEffect(() => {
+    dispatch(
+      setDepartureDate(
+        `${date.getFullYear()}-${padTo2Digits(date.getMonth() + 1)}-${padTo2Digits(date.getDate())}`
+      )
+    );
+  }, [date]);
 
   const buttons = document.getElementsByClassName("button");
 
