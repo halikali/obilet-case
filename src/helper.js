@@ -37,7 +37,7 @@ const formatDate = (date) => {
 };
 
 const formatDay = (date) => {
-  return `${date.split("-")[2]} ${monthArr[parseInt(date.split("-")[1], 10)]} ${
+  return `${date.split("-")[2]} ${monthArr[date.split("-")[1] - 1]} ${
     date.split("-")[0]
   }`;
 };
