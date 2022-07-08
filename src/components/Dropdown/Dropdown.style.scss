@@ -1,0 +1,27 @@
+@import "../../CommonCSS/variables.scss";
+
+.dropdown {
+  position: absolute;
+  z-index: 1;
+  display: none;
+  top: 6rem;
+  left: 0;
+  width: 100%;
+  max-height: 35rem;
+  overflow-y: scroll;
+  text-indent: 3rem;
+  background-color: map-get($colors, "alabaster");
+
+  &__item {
+    width: 100%;
+    height: 2.6rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+    line-height: 2.6rem;
+
+    &:hover {
+      background-color: map-get($colors, "nobel");
+      color: map-get($colors, "concrete");
+    }
+  }
+}
