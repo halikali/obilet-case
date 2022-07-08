@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setdestination, setOrigin } from "Slices/FormSlices";
 
+import { setdestination, setOrigin } from "Slices/FormSlices";
+import Loader from "components/Loader/Loader.component";
 import "./Dropdown.style.scss";
 
 const Dropdown = ({ seperator }) => {
@@ -34,7 +35,15 @@ const Dropdown = ({ seperator }) => {
   };
 
   if (!data) {
-    return <div> veriler yükleniyor... </div>;
+    return (
+      <ul className="dropdown">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <li key={i} className={"dropdown__item"}>
+            <Loader />
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   return (
