@@ -13,7 +13,7 @@ import "./HomePage.style.scss";
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
 
   const { origin, destination, departureDate } = useSelector(
     (state) => state.form.data
@@ -36,7 +36,7 @@ const HomePage = () => {
     }
 
     dispatch(fetchJourney({ origin, destination, departureDate }));
-    naviagte("/journey-list");
+    navigate(`/seferler/${origin.id}-${destination.id}/${departureDate}`);
   };
 
   return (

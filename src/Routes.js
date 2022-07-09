@@ -8,7 +8,7 @@ const routes = [
     name: "home",
   },
   {
-    path: "/journey-list",
+    path: "/seferler/:originId-:destinationId/:departureDate",
     component: <JourneyListPage />,
     name: "journeyList",
   },

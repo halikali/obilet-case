@@ -4,25 +4,26 @@ import "./JourneyCard.style.scss";
 
 const JourneyCard = ({ journeyInfo }) => {
   const departure = journeyInfo.departure.split("T")[1].slice(0, 5);
+  const departureDate = journeyInfo.departure.split("T")[0];
   const duration = journeyInfo.duration.slice(0, 5);
 
   const calcArrival = (hour, duration) => {
     var time1 = hour.split(":");
     var time2 = duration.split(":");
 
-    let hoursSum = Number(time1[0]) + Number(time2[0]);
+    let hourSum = Number(time1[0]) + Number(time2[0]);
     let minuteSum = Number(time1[1]) + Number(time2[1]);
 
     if (minuteSum > 59) {
       minuteSum = Math.abs(60 - minuteSum);
-      hoursSum += 1;
+      hourSum += 1;
     }
 
-    if (hoursSum > 23) {
-      hoursSum = Math.abs(24 - hoursSum);
+    if (hourSum > 23) {
+      hourSum = Math.abs(24 - hourSum);
     }
 
-    return `${padTo2Digits(hoursSum)}:${padTo2Digits(minuteSum)}`;
+    return `${padTo2Digits(hourSum)}:${padTo2Digits(minuteSum)}`;
   };
 
   const arrival = calcArrival(departure, duration);
@@ -41,10 +42,10 @@ const JourneyCard = ({ journeyInfo }) => {
             <p className="journey-date"> {arrival} </p>
           </div>
         </div>
-        <button className="price-button">{journeyInfo.price},00 TL</button>
+        <a className="price-button" href={`https://www.obilet.com/seferler/${journeyInfo.origin.id}-${journeyInfo.destination.id}/${departureDate}/${journeyInfo.journeyId}`} target="_blank" >{journeyInfo.price},00 TL</a>
       </div>
       <p className="route">
-        {journeyInfo.origin} - {journeyInfo.destination}
+        {journeyInfo.origin.name} - {journeyInfo.destination.name}
       </p>
     </div>
   );
