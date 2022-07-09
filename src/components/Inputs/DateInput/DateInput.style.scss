@@ -35,7 +35,7 @@
     height: 2.4rem;
     background-color: map-get($colors, "white");
     color: map-get($colors, "nevada");
-    border: 1px solid map-get($colors, "nevada");
+    border: 0.1rem solid map-get($colors, "nevada");
     border-radius: 0.2rem;
     cursor: pointer;
 

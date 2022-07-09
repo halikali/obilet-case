@@ -19,6 +19,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    flex: 1;
     margin-left: 1rem;
     gap: 1rem;
   }
@@ -46,6 +47,7 @@
   }
 
   .input {
+    width: calc(100% - 3rem);
     border: none;
     outline: 0;
     cursor: pointer;
