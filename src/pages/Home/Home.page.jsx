@@ -6,6 +6,7 @@ import axios from "axios";
 import CityInput from "components/Inputs/CityInput/CityInput.component";
 import DateInput from "components/Inputs/DateInput/DateInput.component";
 import { fetchJourney, fetchLocations } from "Slices/JourneySlice";
+import { HomePageHeader } from "components/Header/Header.component";
 import { changeValues } from "Slices/FormSlices";
 import { Switch } from "components/Icons/Icons.component";
 import "./HomePage.style.scss";
@@ -20,7 +21,7 @@ const HomePage = () => {
     axios
       .get("http://localhost:5000/api/startSession")
       .then(() => dispatch(fetchLocations()));
-  }, []);
+  });
 
   const switchInputValues = () => {
     dispatch(changeValues());
@@ -32,7 +33,7 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      <div className="header"></div>
+      <HomePageHeader />
       <div className="content">
         <div className="selection__city-areas-wrapper">
           <CityInput label={"Nereden"} city="İzmir" inputName={"origin"} />
