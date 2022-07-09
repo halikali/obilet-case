@@ -6,7 +6,7 @@ import { formatDay } from "helper";
 import "./Header.style.scss";
 
 const HomePageHeader = () => {
-  return <div className="header"></div>;
+  return <header className="header"></header>;
 };
 
 const DetailPageHeader = () => {
@@ -17,7 +17,7 @@ const DetailPageHeader = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="header">
+    <header className="header">
       <ArrowBack className="header__icon" onClick={() => navigate(-1)} />
       <div className="header__info-wrapper">
         <p className="header__info">
@@ -27,7 +27,7 @@ const DetailPageHeader = () => {
           {formatDay(departureDate)}
         </p>
       </div>
-    </div>
+    </header>
   );
 };
 
