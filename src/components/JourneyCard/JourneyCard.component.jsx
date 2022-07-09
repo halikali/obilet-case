@@ -41,7 +41,7 @@ const JourneyCard = ({ journeyInfo }) => {
             <p className="journey-date"> {arrival} </p>
           </div>
         </div>
-        <button className="price-button">{journeyInfo.price} TL</button>
+        <button className="price-button">{journeyInfo.price},00 TL</button>
       </div>
       <p className="route">
         {journeyInfo.origin} - {journeyInfo.destination}
