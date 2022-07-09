@@ -7,7 +7,7 @@ import { setDepartureDate } from "Slices/FormSlices";
 import "./DateInput.style.scss";
 
 const DateInput = () => {
-  const [activeDay, setActiveDay] = useState("Bugün");
+  const [activeDay, setActiveDay] = useState("Yarın");
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
 
@@ -51,10 +51,10 @@ const DateInput = () => {
         <p className="text">{formatDate(date)} </p>
       </div>
       <div className="button__wrapper">
-        <button className="button button--active" onClick={setActiveButton}>
+        <button className="button " onClick={setActiveButton}>
           Bugün
         </button>
-        <button className="button" onClick={setActiveButton}>
+        <button className="button button--active" onClick={setActiveButton}>
           Yarın
         </button>
       </div>
