@@ -22,6 +22,7 @@
     &:hover {
       background-color: map-get($colors, "nobel");
       color: map-get($colors, "concrete");
+      transition: all 0.2s ease-in-out;
     }
   }
 }
