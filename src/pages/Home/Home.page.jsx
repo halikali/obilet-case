@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import CityInput from "components/Inputs/CityInput/CityInput.component";
@@ -13,6 +13,8 @@ import "./HomePage.style.scss";
 
 const HomePage = () => {
   const dispatch = useDispatch();
+  const naviagte = useNavigate();
+
   const { origin, destination, departureDate } = useSelector(
     (state) => state.form.data
   );
@@ -28,7 +30,13 @@ const HomePage = () => {
   };
 
   const findJourney = () => {
+    if (origin.name === destination.name) {
+      alert("Kalkış ve varış noktalaın aynı olamaz");
+      return false;
+    }
+
     dispatch(fetchJourney({ origin, destination, departureDate }));
+    naviagte("/journey-list");
   };
 
   return (
@@ -41,13 +49,9 @@ const HomePage = () => {
           <Switch className="icon" onClick={() => switchInputValues()} />
         </div>
         <DateInput />
-        <Link
-          to={"/journey-list"}
-          className="find-button"
-          onClick={findJourney}
-        >
+        <button className="find-button" onClick={findJourney}>
           Bileti Bul
-        </Link>
+        </button>
       </div>
       <div className="seo-desc__wrapper">
         <p className="seo-desc__text">
