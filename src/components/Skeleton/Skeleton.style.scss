@@ -1,0 +1,72 @@
+@import "../../CommonCSS/variables.scss";
+
+.skeleton {
+  position: relative;
+  width: calc(100% - 1.6rem);
+  padding: 6px 0 11px;
+  margin: auto;
+  background: linear-gradient(
+    261deg,
+    rgba(237, 237, 237, 1) 0%,
+    rgba(255, 255, 255, 1) 57%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  border: 0.5px solid map-get($colors, "nobel");
+  border-radius: 3px;
+  margin-top: 1.1rem;
+
+  .line {
+    display: block;
+    height: 1rem;
+    background: map-get($colors, "nobel");
+    margin-left: 2rem;
+    margin-bottom: 0.5rem;
+    @extend %skeleton__animation;
+
+    &--1,
+    &--2 {
+      width: 30%;
+    }
+
+    &--3 {
+      width: 60%;
+      margin-top: 1.5rem;
+    }
+  }
+
+  .btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: block;
+    width: 6rem;
+    height: 2.4rem;
+    border-radius: 0.5rem;
+    background-color: map-get($colors, "nobel");
+    @extend %skeleton__animation;
+  }
+
+  %skeleton__animation {
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholder;
+    animation-timing-function: linear;
+    background-image: linear-gradient(
+      to right,
+      rgb(202, 202, 202) 8%,
+      rgb(219, 216, 216) 18%,
+      rgb(212, 203, 203) 33%
+    );
+    background-size: 800px 104px;
+  }
+
+  @keyframes placeholder {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 350px 0;
+    }
+  }
+}
