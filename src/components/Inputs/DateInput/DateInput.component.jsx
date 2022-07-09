@@ -6,7 +6,6 @@ import { formatDate, padTo2Digits } from "helper";
 import { setDepartureDate } from "Slices/FormSlices";
 import "./DateInput.style.scss";
 
-
 const DateInput = () => {
   const [activeDay, setActiveDay] = useState("Bugün");
   const [date, setDate] = useState(new Date());
@@ -21,10 +20,12 @@ const DateInput = () => {
   useLayoutEffect(() => {
     dispatch(
       setDepartureDate(
-        `${date.getFullYear()}-${padTo2Digits(date.getMonth() + 1)}-${padTo2Digits(date.getDate())}`
+        `${date.getFullYear()}-${padTo2Digits(
+          date.getMonth() + 1
+        )}-${padTo2Digits(date.getDate())}`
       )
     );
-  }, [date]);
+  }, [date, dispatch]);
 
   const buttons = document.getElementsByClassName("button");
 

@@ -16,13 +16,13 @@ const CityInput = ({ label, city, inputName }) => {
     inputName === "origin"
       ? dispatch(setOrigin({ ...origin, name: cityName }))
       : dispatch(setdestination({ ...destination, name: cityName }));
-  }, [cityName]);
+  }, [cityName, dispatch]);
 
   useEffect(() => {
     inputName === "origin"
       ? setCityName(origin.name)
       : setCityName(destination.name);
-  }, [origin, destination]);
+  }, [origin, destination, inputName]);
 
   const onchangeHandler = (e) => {
     setCityName(e.target.value);
