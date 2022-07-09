@@ -38,4 +38,10 @@
       cursor: pointer;
     }
   }
+
+  .info-message{
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    color: map-get($colors, "nevada");
+  }
 }
