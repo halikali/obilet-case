@@ -33,7 +33,7 @@ const HomePage = () => {
   };
 
   const findJourney = () => {
-    if (origin.name === destination.name) {
+    if (origin.name === destination.name || new Date(departureDate).setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0)) {
       setIsModalOpen(true);
       return false;
     }
@@ -49,7 +49,10 @@ const HomePage = () => {
         <span className="close" onClick={() => setIsModalOpen(false)}>
           &#10005;
         </span>
-        <p>Kalkış ve varış noktaları aynı olamaz </p>
+        {origin.name === destination.name && (
+          <p>Kalkış ve varış noktaları aynı olamaz </p>
+        )}
+        {new Date(departureDate).setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0) && <p>Kalkış tarihi bugünden daha eski olamaz</p>}
       </Modal>
       <div className="content">
         <div className="selection__city-areas-wrapper">

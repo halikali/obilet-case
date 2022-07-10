@@ -22,7 +22,11 @@ const JourneyListPage = () => {
     );
   }
 
-  if (journey.isLoad && Array.from(journey.data.data).length === 0) {
+  if (
+    journey.isLoad &&
+    journey.data.data &&
+    Array.from(journey.data.data).length === 0
+  ) {
     return (
       <div className="journey-list-page">
         <DetailPageHeader />
@@ -45,7 +49,10 @@ const JourneyListPage = () => {
             journeyInfo={{
               journeyId: item.id,
               origin: { name: item.journey.origin, id: originId },
-              destination: {name:item.journey.destination, id: destinationId},
+              destination: {
+                name: item.journey.destination,
+                id: destinationId,
+              },
               price: item.journey["original-price"],
               departure: item.journey.departure,
               duration: item.journey.duration,
