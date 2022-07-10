@@ -44,7 +44,7 @@ const JourneyListPage = () => {
       {journey.data.status !== "Success" ? (
         <p className="info-message"> {journey.data["user-message"]} </p>
       ) : (
-        sortedJourney.map((item) => (
+        sortedJourney && sortedJourney.map((item) => (
           <JourneyCard
             key={item.id}
             journeyInfo={{

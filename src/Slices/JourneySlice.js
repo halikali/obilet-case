@@ -10,12 +10,20 @@ const initialState = {
   locationList: {},
 };
 
+export const startSession = createAsyncThunk("journey/getSession", async () => {
+  const response = await axios.get("http://localhost:5000/api/startSession");
+  sessionStorage.setItem("sessionStatus", response.data.status);
+  return response.data;
+});
+
 export const fetchLocations = createAsyncThunk(
   "journey/getLocationList",
   async () => {
     const response = await axios.get(
       "http://localhost:5000/api/getAllLocations"
     );
+    sessionStorage.setItem("locationList", JSON.stringify(response.data.data));
+    sessionStorage.setItem("sessionStatus", response.data.status);
     return response.data;
   }
 );
@@ -23,9 +31,10 @@ export const fetchLocations = createAsyncThunk(
 export const fetchJourney = createAsyncThunk(
   "journey/getJourney",
   async (values) => {
-    const response = await axios.get("http://localhost:5000/api/getJourneys",{
+    const response = await axios.get("http://localhost:5000/api/getJourneys", {
       params: values,
     });
+    sessionStorage.setItem("sessionStatus", response.data.status);
     return response.data;
   }
 );

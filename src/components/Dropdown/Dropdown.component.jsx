@@ -9,9 +9,11 @@ const Dropdown = ({ seperator }) => {
   const { origin, destination } = useSelector((state) => state.form.data);
   const { data } = useSelector((state) => state.journey.locationList);
 
+  const locationList = JSON.parse(sessionStorage.getItem("locationList")) || data;
+
   const cityList = [];
-  data &&
-    Array.from(data).forEach((item) =>
+  locationList &&
+    Array.from(locationList).forEach((item) =>
       cityList.push({
         id: item.id,
         name: item.name,
@@ -34,7 +36,7 @@ const Dropdown = ({ seperator }) => {
       : dispatch(setdestination({ name: cityName, id }));
   };
 
-  if (!data) {
+  if (!locationList) {
     return (
       <ul className="dropdown">
         {Array.from({ length: 5 }).map((_, i) => (

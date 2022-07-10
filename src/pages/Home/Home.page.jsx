@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import CityInput from "components/Inputs/CityInput/CityInput.component";
 import DateInput from "components/Inputs/DateInput/DateInput.component";
 import Modal from "components/Modal/Modal.component";
-import { fetchJourney, fetchLocations } from "Slices/JourneySlice";
+import {
+  fetchJourney,
+  fetchLocations,
+  startSession,
+} from "Slices/JourneySlice";
 import { HomePageHeader } from "components/Header/Header.component";
 import { changeValues } from "Slices/FormSlices";
 import { Switch } from "components/Icons/Icons.component";
@@ -23,9 +26,8 @@ const HomePage = () => {
   );
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/startSession")
-      .then(() => dispatch(fetchLocations()));
+    sessionStorage.getItem("sessionStatus") !== "Success" && dispatch(startSession());
+    !sessionStorage.getItem("locationList") && dispatch(fetchLocations());
   });
 
   const switchInputValues = () => {
@@ -33,7 +35,11 @@ const HomePage = () => {
   };
 
   const findJourney = () => {
-    if (origin.name === destination.name || new Date(departureDate).setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0)) {
+    if (
+      origin.name === destination.name ||
+      new Date(departureDate).setHours(0, 0, 0, 0) <
+        new Date().setHours(0, 0, 0, 0)
+    ) {
       setIsModalOpen(true);
       return false;
     }
@@ -52,7 +58,10 @@ const HomePage = () => {
         {origin.name === destination.name && (
           <p>Kalkış ve varış noktaları aynı olamaz </p>
         )}
-        {new Date(departureDate).setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0) && <p>Kalkış tarihi bugünden daha eski olamaz</p>}
+        {new Date(departureDate).setHours(0, 0, 0, 0) <
+          new Date().setHours(0, 0, 0, 0) && (
+          <p>Kalkış tarihi bugünden daha eski olamaz</p>
+        )}
       </Modal>
       <div className="content">
         <div className="selection__city-areas-wrapper">

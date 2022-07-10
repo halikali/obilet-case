@@ -36,7 +36,7 @@ app.get("/api/startSession", async (req, res) => {
       },
     })
     .then((response) => {
-      console.log("seeeion has been started");
+      console.log("session has been started");
       sessionInfo.deviceId = response.data.data["device-id"];
       sessionInfo.sessionId = response.data.data["session-id"];
       res.json(response.data);
