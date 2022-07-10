@@ -19,7 +19,7 @@
     display: block;
     height: 1rem;
     background: map-get($colors, "nobel");
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-bottom: 0.5rem;
     border-radius: 0.5rem;
     @extend %skeleton__animation;
@@ -40,7 +40,7 @@
     top: 1rem;
     right: 1rem;
     display: block;
-    width: 6rem;
+    width: 9rem;
     height: 2.4rem;
     border-radius: 0.5rem;
     background-color: map-get($colors, "nobel");
