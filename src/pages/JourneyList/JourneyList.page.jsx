@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-
 import { useParams } from "react-router-dom";
 
 import JourneyCard from "components/JourneyCard/JourneyCard.component";
@@ -11,8 +10,10 @@ const JourneyListPage = () => {
   const { journey } = useSelector((state) => state.journey);
   const { destinationId, originId } = useParams();
 
+  const sortedJourney = [...journey.data.data].sort((a,b) => new Date(a.journey.departure) - new Date(b.journey.departure));
+
   if (!journey.isLoad) {
-    return (
+    return ( 
       <div className="journey-list-page">
         <DetailPageHeader />
         {Array.from({ length: 10 }).map((_, i) => (
@@ -43,7 +44,7 @@ const JourneyListPage = () => {
       {journey.data.status !== "Success" ? (
         <p className="info-message"> {journey.data["user-message"]} </p>
       ) : (
-        Array.from(journey.data.data).map((item) => (
+        sortedJourney.map((item) => (
           <JourneyCard
             key={item.id}
             journeyInfo={{
