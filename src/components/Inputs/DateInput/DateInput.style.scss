@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: flex-start;
     margin-left: 1rem;
+    height: 2rem;
     gap: 1rem;
   }
 
@@ -28,6 +29,12 @@
   &--date {
     position: relative;
     margin-top: 2rem;
+
+    &:hover {
+      .datepicker-wrapper {
+        display: block;
+      }
+    }
   }
 
   .button {
@@ -55,5 +62,12 @@
       top: 50%;
       transform: translateY(-50%);
     }
+  }
+
+  .datepicker-wrapper {
+    position: absolute;
+    display: none;
+    bottom: 1rem;
+    left: 3rem;
   }
 }

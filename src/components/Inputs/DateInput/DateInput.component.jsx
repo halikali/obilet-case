@@ -1,5 +1,7 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import { Calendar } from "components/Icons/Icons.component";
 import { formatDate, padTo2Digits } from "helper";
@@ -34,10 +36,13 @@ const DateInput = () => {
     activeFilter && setActiveDay(activeFilter.innerText);
   };
 
-  const setActiveButton = (e) => {
+  const removeActiveClass = () => {
     Array.from(buttons).forEach((item) =>
       item.classList.remove("button--active")
     );
+  };
+  const setActiveButton = (e) => {
+    removeActiveClass();
     e.target.classList.add("button--active");
 
     findActiveFilter();
@@ -49,6 +54,9 @@ const DateInput = () => {
       <div className="selection__text-wrapper">
         <p className="label">Tarih</p>
         <p className="text">{formatDate(date)} </p>
+      </div>
+      <div className="datepicker-wrapper">
+        <DatePicker selected={date} onChange={(date) => setDate(date)} onSelect={() => removeActiveClass()}/>
       </div>
       <div className="button__wrapper">
         <button className="button " onClick={setActiveButton}>
