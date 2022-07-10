@@ -67,11 +67,15 @@
   .datepicker-wrapper {
     position: absolute;
     display: none;
+    z-index: 1;
     bottom: 1rem;
     left: 3rem;
   }
 
   .react-datepicker-wrapper {
     opacity: 0;
+    input {
+      cursor: pointer;
+    }
   }
 }
