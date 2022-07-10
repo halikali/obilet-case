@@ -55,8 +55,12 @@ const DateInput = () => {
         <p className="label">Tarih</p>
         <p className="text">{formatDate(date)} </p>
       </div>
-      <div className="datepicker-wrapper">
-        <DatePicker selected={date} onChange={(date) => setDate(date)} onSelect={() => removeActiveClass()}/>
+      <div className="datepicker-wrapper" >
+        <DatePicker
+          selected={date}
+          onChange={(date) => setDate(date)}
+          onSelect={() => removeActiveClass()}
+        />
       </div>
       <div className="button__wrapper">
         <button className="button " onClick={setActiveButton}>
