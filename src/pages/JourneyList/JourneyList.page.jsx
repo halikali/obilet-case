@@ -10,7 +10,7 @@ const JourneyListPage = () => {
   const { journey } = useSelector((state) => state.journey);
   const { destinationId, originId } = useParams();
 
-  const sortedJourney = [...journey.data.data].sort((a,b) => new Date(a.journey.departure) - new Date(b.journey.departure));
+  const sortedJourney = journey.data.data && [...journey.data.data].sort((a,b) => new Date(a.journey.departure) - new Date(b.journey.departure));
 
   if (!journey.isLoad) {
     return ( 
