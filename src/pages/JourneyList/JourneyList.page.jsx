@@ -1,19 +1,30 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 import JourneyCard from "components/JourneyCard/JourneyCard.component";
 import { JourneyCardSkeleton } from "components/Skeleton/Skeleton.component";
 import { DetailPageHeader } from "components/Header/Header.component";
+import { fetchJourney } from "Slices/JourneySlice";
 import "./JourneyListPage.style.scss";
 
 const JourneyListPage = () => {
   const { journey } = useSelector((state) => state.journey);
-  const { destinationId, originId } = useParams();
+  const dispatch = useDispatch();
+  const { destinationId, originId, departureDate } = useParams();
+  
+  const sortedJourney =
+    journey.data.data &&
+    [...journey.data.data].sort(
+      (a, b) => new Date(a.journey.departure) - new Date(b.journey.departure)
+    );
 
-  const sortedJourney = journey.data.data && [...journey.data.data].sort((a,b) => new Date(a.journey.departure) - new Date(b.journey.departure));
+  useEffect(() => {
+    dispatch(fetchJourney({ originId, destinationId, departureDate }));
+  }, []);
 
   if (!journey.isLoad) {
-    return ( 
+    return (
       <div className="journey-list-page">
         <DetailPageHeader />
         {Array.from({ length: 10 }).map((_, i) => (
@@ -44,7 +55,8 @@ const JourneyListPage = () => {
       {journey.data.status !== "Success" ? (
         <p className="info-message"> {journey.data["user-message"]} </p>
       ) : (
-        sortedJourney && sortedJourney.map((item) => (
+        sortedJourney &&
+        sortedJourney.map((item) => (
           <JourneyCard
             key={item.id}
             journeyInfo={{

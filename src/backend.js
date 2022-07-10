@@ -62,9 +62,6 @@ app.get("/api/getAllLocations", (req, res) => {
 });
 
 app.get("/api/getJourneys", async (req, res) => {
-  let origin = JSON.parse(req.query.origin);
-  let destination = JSON.parse(req.query.destination);
-
   await api()
     .post("/journey/getbusjourneys", {
       "device-session": {
@@ -74,8 +71,8 @@ app.get("/api/getJourneys", async (req, res) => {
       date: new Date(),
       language: "tr-TR",
       data: {
-        "origin-id": origin.id,
-        "destination-id": destination.id,
+        "origin-id": req.query.originId,
+        "destination-id": req.query.destinationId,
         "departure-date": req.query.departureDate,
       },
     })

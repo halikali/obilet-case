@@ -26,7 +26,8 @@ const HomePage = () => {
   );
 
   useEffect(() => {
-    sessionStorage.getItem("sessionStatus") !== "Success" && dispatch(startSession());
+    sessionStorage.getItem("sessionStatus") !== "Success" &&
+      dispatch(startSession());
     !sessionStorage.getItem("locationList") && dispatch(fetchLocations());
   });
 
@@ -43,8 +44,6 @@ const HomePage = () => {
       setIsModalOpen(true);
       return false;
     }
-
-    dispatch(fetchJourney({ origin, destination, departureDate }));
     navigate(`/seferler/${origin.id}-${destination.id}/${departureDate}`);
   };
 
