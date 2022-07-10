@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import CityInput from "components/Inputs/CityInput/CityInput.component";
 import DateInput from "components/Inputs/DateInput/DateInput.component";
+import Modal from "components/Modal/Modal.component";
 import { fetchJourney, fetchLocations } from "Slices/JourneySlice";
 import { HomePageHeader } from "components/Header/Header.component";
 import { changeValues } from "Slices/FormSlices";
@@ -14,6 +15,8 @@ import "./HomePage.style.scss";
 const HomePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { origin, destination, departureDate } = useSelector(
     (state) => state.form.data
@@ -31,7 +34,7 @@ const HomePage = () => {
 
   const findJourney = () => {
     if (origin.name === destination.name) {
-      alert("Kalkış ve varış noktalaın aynı olamaz");
+      setIsModalOpen(true);
       return false;
     }
 
@@ -42,6 +45,12 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <HomePageHeader />
+      <Modal style={{ display: isModalOpen ? "flex" : "none" }}>
+        <span className="close" onClick={() => setIsModalOpen(false)}>
+          &#10005;
+        </span>
+        <p>Kalkış ve varış noktaları aynı olamaz </p>
+      </Modal>
       <div className="content">
         <div className="selection__city-areas-wrapper">
           <CityInput label={"Nereden"} city="İzmir" inputName={"origin"} />
