@@ -42,7 +42,7 @@ const JourneyCard = ({ journeyInfo }) => {
             <p className="journey-date"> {arrival} </p>
           </div>
         </div>
-        <a className="price-button" href={`https://www.obilet.com/seferler/${journeyInfo.origin.id}-${journeyInfo.destination.id}/${departureDate}/${journeyInfo.journeyId}`} target="_blank" >{journeyInfo.price},00 TL</a>
+        <a className="price-button" rel="noreferrer" href={`https://www.obilet.com/seferler/${journeyInfo.origin.id}-${journeyInfo.destination.id}/${departureDate}/${journeyInfo.journeyId}`} target="_blank" >{journeyInfo.price},00 TL</a>
       </div>
       <p className="route">
         {journeyInfo.origin.name} - {journeyInfo.destination.name}
