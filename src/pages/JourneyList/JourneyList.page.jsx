@@ -1,18 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import JourneyCard from "components/JourneyCard/JourneyCard.component";
+import Modal from "components/Modal/Modal.component";
 import { JourneyCardSkeleton } from "components/Skeleton/Skeleton.component";
 import { DetailPageHeader } from "components/Header/Header.component";
 import { fetchJourney } from "Slices/JourneySlice";
 import "./JourneyListPage.style.scss";
 
 const JourneyListPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { journey } = useSelector((state) => state.journey);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { destinationId, originId, departureDate } = useParams();
-  
+
   const sortedJourney =
     journey.data.data &&
     [...journey.data.data].sort(
@@ -49,12 +52,33 @@ const JourneyListPage = () => {
     );
   }
 
+  if (journey.data.status === "DeviceSessionError") {
+    setTimeout(() => {
+      navigate(-1);
+    }, 5000);
+    return (
+      <>
+        <DetailPageHeader />
+        <Modal>
+          <p className="info-message"> {journey.data["user-message"]} </p>
+          <p className="info-message">
+            5 saniye içerisinde ana sayfaya yönlendirileceksiniz.
+          </p>
+        </Modal>
+      </>
+    );
+  }
+
   return (
     <div className="journey-list-page">
-      <DetailPageHeader />
-      {journey.data.status !== "Success" ? (
-        <p className="info-message"> {journey.data["user-message"]} </p>
-      ) : (
+      <DetailPageHeader
+        journey={{
+          origin: journey.data.data[0]["origin-location"],
+          destination: journey.data.data[0]["destination-location"],
+          departure: journey.data.data[0].journey.departure,
+        }}
+      />
+      {journey.data.status === "Success" &&
         sortedJourney &&
         sortedJourney.map((item) => (
           <JourneyCard
@@ -71,8 +95,7 @@ const JourneyListPage = () => {
               duration: item.journey.duration,
             }}
           />
-        ))
-      )}
+        ))}
     </div>
   );
 };
