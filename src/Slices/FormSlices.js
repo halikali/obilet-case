@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   data: {
     origin: { name: "İzmir", id: "383" },
-    destination: { name: "Sakarya", id: "1171" },
-    departureDate: "2022-01-01",
+    destination: { name: "Ankara", id: "356" },
+    departureDate: new Date(),
   },
 };
 
