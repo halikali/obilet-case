@@ -5,11 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CityInput from "components/Inputs/CityInput/CityInput.component";
 import DateInput from "components/Inputs/DateInput/DateInput.component";
 import Modal from "components/Modal/Modal.component";
-import {
-  fetchJourney,
-  fetchLocations,
-  startSession,
-} from "Slices/JourneySlice";
+import { fetchLocations, startSession } from "Slices/JourneySlice";
 import { HomePageHeader } from "components/Header/Header.component";
 import { changeValues } from "Slices/FormSlices";
 import { Switch } from "components/Icons/Icons.component";

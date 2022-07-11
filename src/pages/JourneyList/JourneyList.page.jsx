@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import JourneyCard from "components/JourneyCard/JourneyCard.component";
 import Modal from "components/Modal/Modal.component";
@@ -10,7 +10,6 @@ import { fetchJourney } from "Slices/JourneySlice";
 import "./JourneyListPage.style.scss";
 
 const JourneyListPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { journey } = useSelector((state) => state.journey);
   const navigate = useNavigate();
   const dispatch = useDispatch();
