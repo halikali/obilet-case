@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 
 import { store } from "store";
 import App from "./App";
-import "./CommonCSS/_reset.scss";
 import "./index.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
